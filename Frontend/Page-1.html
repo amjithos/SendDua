@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en">
+
+<head>
+  <!-- Meta Tags -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="keywords" content="Send a Dua, Share a Blessing, INTUITIVE">
+  <meta name="description" content="">
+  <title>Send a Dua</title>
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="nicepage.css" media="screen">
+  <link rel="stylesheet" href="Page-1.css" media="screen">
+  
+  <!-- Scripts -->
+  <script class="u-script" type="text/javascript" src="jquery.js" defer></script>
+  <script class="u-script" type="text/javascript" src="nicepage.js" defer></script>
+  
+  <!-- Google Fonts -->
+  <link id="u-theme-google-font" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Open+Sans:300,400,600,700,800">
+  <link id="u-page-google-font" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Playfair+Display:400,500,600,700,800,900|Jost:100,200,300,400,500,600,700,800,900">
+  
+  <!-- Open Graph Metadata -->
+  <meta name="theme-color" content="#478ac9">
+  <meta property="og:title" content="Page 1">
+  <meta property="og:type" content="website">
+
+  <style>
+    .popup {
+      display: none;
+      width: 90%;
+      max-width: 400px;
+      height: 500px;
+      padding: 0;
+      background: url('https://ik.imagekit.io/cdt/Send%20a%20Dua/Dua%20Pop%20up%205.png?updatedAt=1740918943976') center/cover no-repeat;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border-radius: 20px;
+      text-align: center;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 1s ease-in-out, transform 0.8s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 20px;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      z-index: 1000;
+    }
+    .popup.show {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      display: none;
+      z-index: 999;
+    }
+    .popup-overlay.show {
+      display: block;
+    }
+    p {
+      color: white;
+      padding: 10px;
+      margin: 0 20px;
+      border-radius: 10px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+
+<body class="u-body u-xl-mode" data-lang="en">
+  <div class="popup-overlay" id="popup-overlay"></div>
+
+ <section class="u-clearfix u-image u-section-1" id="block-2">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      
+      <!-- Background Images -->
+      <img class="u-image u-image-1" src="images/Pattern.svg" alt="Pattern" />
+      <img class="u-image u-image-2" src="images/Mosque.svg" alt="Mosque" />
+      <img class="u-image u-image-3" src="images/Lanterns1.svg" alt="Lanterns" />
+      
+      <!-- Main Title -->
+      <h1 class="u-align-center u-text u-text-1">Send a Dua,<br>Share a Blessing</h1>
+      
+      <!-- Decorative Image -->
+      <img class="u-image u-image-4" src="images/Lights.svg" alt="Lights" />
+      
+      <!-- Call to Action Button -->
+      <a href="#" class="u-btn u-button-style u-custom-color-7 u-hover-palette-1-dark-1 u-btn-1">CREATE A DUA</a>
+      
+      <!-- Subtext -->
+      <h3 class="u-align-center u-text u-text-2">Offer a heartfelt dua to those who matter most.</h3>
+
+      <!-- Additional Decorative Images -->
+      <img class="u-image u-image-5" src="images/Sparkle.svg" alt="Sparkle" />
+      <img class="u-image u-image-6" src="images/Group1000004667.svg" alt="Decorative" />
+      
+      <!-- Section Title & Description -->
+      <h3 class="u-align-center u-text u-text-3">Find the perfect dua<br>for your loved ones</h3>
+      <h4 class="u-align-center u-text u-text-4">Browse heartfelt Ramadan duas crafted to inspire and uplift.<br>Choose one to share your prayers and brighten a loved one’s day.</h4>
+      
+      <!-- Decorative Line -->
+      <img class="u-image u-image-7" src="images/Group1000004570.svg" alt="Divider" />
+      
+      <!-- Dua Card Gallery -->
+      <div class="u-gallery u-layout-grid u-lightbox u-no-transition u-show-text-none u-gallery-1" id="carousel-2d39">
+        <div class="u-gallery-inner u-gallery-inner-1" role="listbox">
+          
+          <!-- Gallery Items (Preserving Layout Order) -->
+          <div class="u-gallery-item u-gallery-item-1">
+            <div class="u-back-slide">
+              <img class="u-back-image u-expanded" src="images/FINALDUACARDDESIGNS-03.png" alt="Dua Card 1">
+            </div>
+            <div class="u-over-slide u-shading u-over-slide-1"></div>
+          </div>
+          
+          <div class="u-gallery-item u-gallery-item-2">
+            <div class="u-back-slide">
+              <img class="u-back-image u-expanded" src="images/FINALDUACARDDESIGNS-02.png" alt="Dua Card 2">
+            </div>
+            <div class="u-over-slide u-shading u-over-slide-2"></div>
+          </div>
+          
+          <div class="u-gallery-item u-gallery-item-3">
+            <div class="u-back-slide">
+              <img class="u-back-image u-expanded" src="images/FINALDUACARDDESIGNS-01.png" alt="Dua Card 3">
+            </div>
+            <div class="u-over-slide u-shading u-over-slide-3"></div>
+          </div>
+          
+          <div class="u-gallery-item u-gallery-item-4">
+            <div class="u-back-slide">
+              <img class="u-back-image u-expanded" src="images/FINALDUACARDDESIGNS-04.png" alt="Dua Card 4">
+            </div>
+            <div class="u-over-slide u-shading u-over-slide-4"></div>
+          </div>
+          
+          <div class="u-gallery-item u-gallery-item-5">
+            <div class="u-back-slide">
+              <img class="u-back-image u-expanded" src="images/FINALDUACARDDESIGNS-05.png" alt="Dua Card 5">
+            </div>
+            <div class="u-over-slide u-shading u-over-slide-5"></div>
+          </div>
+          
+          <div class="u-gallery-item u-gallery-item-6">
+            <div class="u-back-slide">
+              <img class="u-back-image u-expanded" src="images/FINALDUACARDDESIGNS-06.png" alt="Dua Card 6">
+            </div>
+            <div class="u-over-slide u-shading u-over-slide-6"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="popup" id="popup">
+    <p id="popup-text">.</p>
+    <button id="popup-btn" onclick="nextStep()">Continue</button>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const popup = document.getElementById("popup");
+      const overlay = document.getElementById("popup-overlay");
+      setTimeout(() => {
+        overlay.classList.add("show");
+        popup.style.display = 'flex';
+        setTimeout(() => {
+          popup.classList.add("show");
+        }, 50);
+      }, 300);
+    });
+
+    function nextStep() {
+      const text = document.getElementById("popup-text");
+      const button = document.getElementById("popup-btn");
+      const popup = document.getElementById("popup");
+      if (button.innerText === "Continue") {
+        text.innerText = ".";
+        button.innerText = "Select";
+        popup.style.backgroundImage = "url('https://ik.imagekit.io/cdt/Send%20a%20Dua/Dua%20Pop%20up%206.png?updatedAt=1740921951253')";
+      } else {
+        popup.classList.remove("show");
+        document.getElementById("popup-overlay").classList.remove("show");
+        setTimeout(() => {
+          popup.style.display = 'none';
+        }, 800);
+      }
+    }
+  </script>
+</body>
+
+</html>
