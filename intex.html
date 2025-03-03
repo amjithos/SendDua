@@ -2,33 +2,142 @@
 <html style="font-size: 16px;" lang="en">
 
 <head>
-  <!-- Meta Tags -->
+  <!-- 1. Meta Tags -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
   <meta name="keywords" content="Send a Dua, Share a Blessing, INTUITIVE">
   <meta name="description" content="">
   <title>Send a Dua</title>
   
-  <!-- Stylesheets -->
+  <!-- 2. Stylesheets -->
   <link rel="stylesheet" href="nicepage.css" media="screen">
   <link rel="stylesheet" href="style.css" media="screen">
   
-  <!-- Scripts -->
+  <!-- 3. Scripts -->
   <script class="u-script" type="text/javascript" src="jquery.js" defer></script>
   <script class="u-script" type="text/javascript" src="nicepage.js" defer></script>
   
-  <!-- Google Fonts -->
+  <!-- 4. Google Fonts -->
   <link id="u-theme-google-font" rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Open+Sans:300,400,600,700,800">
   <link id="u-page-google-font" rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Playfair+Display:400,500,600,700,800,900|Jost:100,200,300,400,500,600,700,800,900">
   
-  <!-- Open Graph Metadata -->
+  <!-- 5. Open Graph Metadata -->
   <meta name="theme-color" content="#478ac9">
   <meta property="og:title" content="Page 1">
   <meta property="og:type" content="website">
 
   <style>
+    /* 6. Custom Styles */
+    .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            width: 90%;
+            max-width: 1200px;
+        }
+    .card {
+            position: relative;
+            width: 100%;
+            padding-top: 100%; 
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+        }
+    .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+    .overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+    .overlay-content {
+            position: relative;
+            width: 90%;
+            max-width: 500px;
+            aspect-ratio: 1 / 1;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+    .select-btn, .submit-btn, .nav-btn {
+            background: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.7);
+            font-size: 20px;
+            padding: 10px;
+        }
+    .prev-btn { left: 10px; }
+    .next-btn { right: 10px; }
+    .input-fields {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+        }
+    .input-fields input {
+            padding: 10px;
+            font-size: 16px;
+        } 
+
+    /* 7. Media Queries */
+    @media (min-width: 1200px) {
+        .dua-grid {
+          grid-template-columns: repeat(9, 1fr);
+          grid-template-rows: repeat(2, auto);
+        }
+    }
+
+    @media (max-width: 1199px) {
+        .dua-grid {
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: repeat(6, auto);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .dua-grid {
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: repeat(9, auto);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .dua-grid {
+          grid-template-columns: repeat(1, 1fr);
+          grid-template-rows: repeat(18, auto);
+        }
+    }
+
+    /* 8. Popup Styles */
     .popup {
       display: none;
       width: 90%;
@@ -93,9 +202,12 @@
 </head>
 
 <body class="u-body u-xl-mode" data-lang="en">
+  
+  <!-- 9. Popup Overlay -->
   <div class="popup-overlay" id="popup-overlay"></div>
 
- <section class="u-clearfix u-image u-section-1" id="block-2">
+  <!-- 10. Main Section (Introduction) -->
+  <section class="u-clearfix u-image u-section-1" id="block-2">
     <div class="u-clearfix u-sheet u-sheet-1">
       
       <!-- Background Images -->
@@ -125,64 +237,42 @@
       
       <!-- Decorative Line -->
       <img class="u-image u-image-7" src="images/Group1000004570.svg" alt="Divider" />
-      
-      <!-- Dua Card Gallery -->
-      <div class="u-gallery u-layout-grid u-lightbox u-no-transition u-show-text-none u-gallery-1" id="carousel-2d39">
-        <div class="u-gallery-inner u-gallery-inner-1" role="listbox">
+
+      <!-- 11. Dua Card Gallery -->
+      <div class="u-gallery u-lightbox u-show-text-none u-gallery-1" id="carousel-2d39">
+        <div class="u-gallery-inner u-gallery-inner-1">
+
+          <div class="grid" id="grid"></div>
           
-          <!-- Gallery Items (Preserving Layout Order) -->
-          <div class="u-gallery-item u-gallery-item-1">
-            <div class="u-back-slide">
-              <img class="u-back-image u-expanded" src="images/FINALDUACARDDESIGNS-03.png" alt="Dua Card 1">
+          <!-- 12. Overlay -->
+          <div class="overlay" id="overlay">
+            <button class="nav-btn prev-btn" onclick="prevCard()">&#9665;</button>
+            <div class="overlay-content" id="overlay-content">
+                <div id="user-details"></div>
+                <div class="input-fields" id="input-fields">
+                    <input type="text" id="user-name" placeholder="Enter Name">
+                    <input type="number" id="user-number" placeholder="Enter Number">
+                    <button class="submit-btn" onclick="saveDetails()">Submit</button>
+                </div>
+                <button class="select-btn" onclick="showInputFields()">Select</button>
             </div>
-            <div class="u-over-slide u-shading u-over-slide-1"></div>
+            <button class="nav-btn next-btn" onclick="nextCard()">&#9655;</button>
           </div>
           
-          <div class="u-gallery-item u-gallery-item-2">
-            <div class="u-back-slide">
-              <img class="u-back-image u-expanded" src="images/FINALDUACARDDESIGNS-02.png" alt="Dua Card 2">
-            </div>
-            <div class="u-over-slide u-shading u-over-slide-2"></div>
-          </div>
-          
-          <div class="u-gallery-item u-gallery-item-3">
-            <div class="u-back-slide">
-              <img class="u-back-image u-expanded" src="images/FINALDUACARDDESIGNS-01.png" alt="Dua Card 3">
-            </div>
-            <div class="u-over-slide u-shading u-over-slide-3"></div>
-          </div>
-          
-          <div class="u-gallery-item u-gallery-item-4">
-            <div class="u-back-slide">
-              <img class="u-back-image u-expanded" src="images/FINALDUACARDDESIGNS-04.png" alt="Dua Card 4">
-            </div>
-            <div class="u-over-slide u-shading u-over-slide-4"></div>
-          </div>
-          
-          <div class="u-gallery-item u-gallery-item-5">
-            <div class="u-back-slide">
-              <img class="u-back-image u-expanded" src="images/FINALDUACARDDESIGNS-05.png" alt="Dua Card 5">
-            </div>
-            <div class="u-over-slide u-shading u-over-slide-5"></div>
-          </div>
-          
-          <div class="u-gallery-item u-gallery-item-6">
-            <div class="u-back-slide">
-              <img class="u-back-image u-expanded" src="images/FINALDUACARDDESIGNS-06.png" alt="Dua Card 6">
-            </div>
-            <div class="u-over-slide u-shading u-over-slide-6"></div>
-          </div>
         </div>
       </div>
+    
     </div>
   </section>
 
+  <!-- 13. Popup Modal -->
   <div class="popup" id="popup">
     <p id="popup-text">.</p>
     <button id="popup-btn" onclick="nextStep()">Continue</button>
   </div>
 
   <script>
+    // 14. Popup and Image Gallery Script
     document.addEventListener("DOMContentLoaded", () => {
       const popup = document.getElementById("popup");
       const overlay = document.getElementById("popup-overlay");
@@ -210,6 +300,49 @@
           popup.style.display = 'none';
         }, 800);
       }
+    }
+
+    // 15. Card Gallery Script
+    const images = [
+            "https://img.freepik.com/free-photo/blue-smooth-wall-textured-background_53876-106133.jpg",
+            "https://png.pngtree.com/background/20220723/original/pngtree-background-biru-keren-dan-kosong-abstract-untuk-template-desain-powerpoint-ppt-picture-image_1738466.jpg"
+        ];
+        
+    const cards = Array.from({ length: 18 }, (_, i) => ({ image: images[i % images.length] }));
+        
+    const grid = document.getElementById('grid');
+    grid.innerHTML = cards.map((card, index) => 
+        `<div class="card" style="background-image: url('${card.image}');" onclick="openOverlay(${index})"></div>`
+    ).join('');
+        
+    let currentIndex = 0;
+    function openOverlay(index) {
+        currentIndex = index;
+        updateOverlay();
+        document.getElementById('overlay').classList.add('active');
+    }
+    function closeOverlay() {
+        document.getElementById('overlay').classList.remove('active');
+    }
+    function showInputFields() {
+        document.getElementById('input-fields').style.display = 'flex';
+    }
+    function saveDetails() {
+        const name = document.getElementById('user-name').value;
+        const number = document.getElementById('user-number').value;
+        document.getElementById('user-details').innerHTML = `${name}<br>${number}`;
+        document.getElementById('input-fields').style.display = 'none';
+    }
+    function prevCard() {
+        currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+        updateOverlay();
+    }
+    function nextCard() {
+        currentIndex = (currentIndex + 1) % cards.length;
+        updateOverlay();
+    }
+    function updateOverlay() {
+        document.getElementById('overlay-content').style.backgroundImage = `url('${cards[currentIndex].image}')`;
     }
   </script>
 </body>
